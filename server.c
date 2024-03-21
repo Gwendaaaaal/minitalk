@@ -6,7 +6,7 @@
 /*   By: gholloco <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 18:46:06 by gholloco          #+#    #+#             */
-/*   Updated: 2024/01/16 19:27:09 by gholloco         ###   ########.fr       */
+/*   Updated: 2024/03/21 12:05:28 by gholloco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ int	g_char = 0;
 
 void	putstr_nl(char **message)
 {
-			ft_putstr_fd(*message, 1);
-			ft_putstr_fd("\n", 1);
-			*message = NULL;
+	ft_putstr_fd(*message, 1);
+	ft_putstr_fd("\n", 1);
+	*message = NULL;
 }
 
 char	*append_char(char *string, char c)

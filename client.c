@@ -6,7 +6,7 @@
 /*   By: gholloco <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 16:39:46 by gholloco          #+#    #+#             */
-/*   Updated: 2024/01/16 19:30:55 by gholloco         ###   ########.fr       */
+/*   Updated: 2024/03/21 12:13:03 by gholloco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	signal_sender(int signal, int pid)
 		tries++;
 		if (tries > 2)
 		{
-			write(1, "Unable to send signal. Make sure you used a valid PID.\n", 55);
+			write(1, "Unable to send signal. Enter a valid PID.\n", 42);
 			exit(1);
 		}
 	}
@@ -89,6 +89,6 @@ int	main(int argc, char **argv)
 	act.sa_handler = &signal_handler;
 	sigaction(SIGUSR1, &act, NULL);
 	sigaction(SIGUSR2, &act, NULL);
-	send_signal(argv[1], ft_atoi(argv[2]));
+	send_signal(argv[2], ft_atoi(argv[1]));
 	write(1, "Message has been sucessfully sent.\n", 35);
 }
