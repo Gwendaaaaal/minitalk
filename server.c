@@ -6,7 +6,7 @@
 /*   By: gholloco <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 18:46:06 by gholloco          #+#    #+#             */
-/*   Updated: 2024/03/21 12:05:28 by gholloco         ###   ########.fr       */
+/*   Updated: 2024/03/21 12:45:51 by gholloco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	signal_handler(int signal, siginfo_t *info, void *ucontext)
 	sig_received++;
 	if (sig_received == 8)
 	{
-		if (!g_char)
+		if (!g_char && message)
 			putstr_nl(&message);
 		else
 		{
