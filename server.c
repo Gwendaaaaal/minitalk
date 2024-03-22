@@ -6,7 +6,7 @@
 /*   By: gholloco <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 18:46:06 by gholloco          #+#    #+#             */
-/*   Updated: 2024/03/21 12:45:51 by gholloco         ###   ########.fr       */
+/*   Updated: 2024/03/22 17:20:16 by gholloco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@
 
 int	g_char = 0;
 
-void	putstr_nl(char **message)
+void	print_and_free(char **message)
 {
-	ft_putstr_fd(*message, 1);
-	ft_putstr_fd("\n", 1);
+	ft_printf("%s\n", *message);
+	free(*message);
 	*message = NULL;
 }
 
@@ -68,7 +68,7 @@ void	signal_handler(int signal, siginfo_t *info, void *ucontext)
 	if (sig_received == 8)
 	{
 		if (!g_char && message)
-			putstr_nl(&message);
+			print_and_free(&message);
 		else
 		{
 			message = append_char(message, g_char);
@@ -95,8 +95,8 @@ void	receive_signal(void)
 int	main(void)
 {
 	receive_signal();
-	printf("My PID is : %d \n", getpid());
+	ft_printf("My PID is : %d \n", getpid());
 	while (!(g_char & EXIT))
 		pause();
-	printf("Server stopped");
+	ft_printf("Server stopped");
 }

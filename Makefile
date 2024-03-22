@@ -18,7 +18,7 @@ LIBFT = $(LIBFT_DIR)/libft.a
 
 CC = cc
 
-CFLAGS = -g -Wall -Werror -Wextra -fsanitize=address
+CFLAGS = -g -Wall -Werror -Wextra
 
 RMFLAGS = -rf
 

@@ -6,15 +6,12 @@
 /*   By: gholloco <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 16:39:46 by gholloco          #+#    #+#             */
-/*   Updated: 2024/03/21 12:13:03 by gholloco         ###   ########.fr       */
+/*   Updated: 2024/03/22 16:36:51 by gholloco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <signal.h>
 #include "./libft/libft.h"
+#include <signal.h>
 
 int	g_sig_fallback = 1;
 
@@ -42,13 +39,13 @@ void	signal_sender(int signal, int pid)
 		tries++;
 		if (tries > 2)
 		{
-			write(1, "Unable to send signal. Enter a valid PID.\n", 42);
+			ft_printf("Unable to send signal. Enter a valid PID.\n");
 			exit(1);
 		}
 	}
 }
 
-int	binaire(int c, int pid)
+int	char_to_binary(int c, int pid)
 {
 	int	comp;
 
@@ -67,14 +64,14 @@ int	binaire(int c, int pid)
 	return (0);
 }
 
-int	send_signal(char *string, int pid)
+int	send_message(char *string, int pid)
 {
 	int	i;
 
 	i = 0;
 	while (string[i])
-		binaire(string[i++], pid);
-	binaire('\0', pid);
+		char_to_binary(string[i++], pid);
+	char_to_binary('\0', pid);
 	return (0);
 }
 
@@ -89,6 +86,6 @@ int	main(int argc, char **argv)
 	act.sa_handler = &signal_handler;
 	sigaction(SIGUSR1, &act, NULL);
 	sigaction(SIGUSR2, &act, NULL);
-	send_signal(argv[2], ft_atoi(argv[1]));
+	send_message(argv[2], ft_atoi(argv[1]));
 	write(1, "Message has been sucessfully sent.\n", 35);
 }
